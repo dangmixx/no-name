@@ -1,3 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 @import './assets/icomoom/style.scss';
 @import './assets/scss/main.scss';
+:root {
+	--primary-color: #ff4176a6;
+	--background-app: #fff;
+	--white: #fff;
+	font-size: 16px;
+}
+
+* {
+	font-family: 'Open Sans', sans-serif;
+}

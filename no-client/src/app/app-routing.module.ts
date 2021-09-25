@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
 	{
@@ -9,13 +9,16 @@ const routes: Routes = [
 	},
     {
 		path: 'shop',
-		pathMatch: 'full',
 		loadChildren: () => import('./layout/shop/shop.module').then((m) => m.ShopModule),
 	},
 	{
 		path: 'admin',
 		loadChildren: () => import('./layout/admin/admin.module').then((m) => m.AdminModule),
 	},
+    {
+        path: '**',
+        redirectTo: 'shop'
+    }
 ];
 
 @NgModule({
@@ -24,6 +27,7 @@ const routes: Routes = [
 			initialNavigation: 'enabled',
 			onSameUrlNavigation: 'reload',
 			scrollPositionRestoration: 'top',
+            preloadingStrategy: PreloadAllModules,
 		}),
 	],
 	exports: [RouterModule],

@@ -1,0 +1,41 @@
+.bg-header {
+	background-color: var(--primary-color);
+	padding: 0 1rem;
+	.name-app {
+		font-size: 2rem;
+		color: var(--white);
+		font-weight: bolder;
+	}
+	.content-header {
+		display: flex;
+		justify-content: space-between;
+		.user-tool {
+			display: flex;
+			align-items: center;
+			font-size: 2em;
+			i {
+				margin: 0 0.5rem;
+				color: var(--white);
+			}
+		}
+	}
+}
+
+nz-content {
+	margin: 0;
+	min-height: calc(100vh - 65px - 70px);
+	background-color: var(--background-app);
+}
+
+nz-breadcrumb {
+	margin: 16px 0;
+}
+
+.inner-content {
+	padding: 24px;
+	min-height: 360px;
+}
+
+nz-footer {
+	text-align: center;
+}
