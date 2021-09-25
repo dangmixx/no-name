@@ -14,17 +14,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 registerLocaleData(en);
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule.withServerTransition({ appId: 'serverApp' }),
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule,
-    BrowserAnimationsModule
-  ],
-  providers: [{ provide: NZ_I18N, useValue: en_US }],
-  bootstrap: [AppComponent]
+	declarations: [AppComponent],
+	imports: [
+		BrowserModule.withServerTransition({ appId: 'serverApp' }),
+		AppRoutingModule,
+		FormsModule,
+		HttpClientModule,
+		BrowserAnimationsModule,
+	],
+	providers: [{ provide: NZ_I18N, useValue: en_US }],
+	bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
