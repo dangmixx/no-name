@@ -5,5 +5,4 @@ export interface ICategories {
 	imageUrl: string;
 	tag: string;
 	tagInfo: string;
-	order: string;
 }

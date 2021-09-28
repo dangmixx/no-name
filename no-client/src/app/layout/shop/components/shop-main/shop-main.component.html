@@ -1,6 +1,6 @@
 <nz-layout>
 	<nz-header class="bg-header">
-		<section class="content-header">
+		<section class="content-header container-shop">
 			<span></span>
 			<div class="name-app">Welcome to my app</div>
 			<div class="user-tool">
@@ -10,6 +10,14 @@
 		</section>
 	</nz-header>
 	<nz-content>
+        <section class="list-menu">
+            <div class="container-shop">
+                <ng-container *ngFor="let cate of listCategories">
+                    {{ cate.name }}
+                </ng-container>
+            </div>
+        </section>
+
 		<div class="inner-content">
 			<router-outlet></router-outlet>
 		</div>

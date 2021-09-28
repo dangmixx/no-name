@@ -10,6 +10,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ProductsService } from 'src/app/service/products.service';
+import { CategoriesService } from 'src/app/service/categories.service';
 @NgModule({
 	declarations: [HomeComponent, LoginComponent, ShopMainComponent],
 	imports: [
@@ -23,5 +25,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 		HttpClientJsonpModule,
 		ReactiveFormsModule,
 	],
+	providers: [
+		ProductsService,
+		CategoriesService
+	]
 })
-export class ShopModule {}
+export class ShopModule { }
