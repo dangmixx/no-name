@@ -1,4 +1,5 @@
-@import './abtracts/mixin.scss';
-@import './abtracts/variants.scss';
-@import './abtracts/key-frames.scss';
+@import './abstract/variants.scss';
+@import './abstract/mixin.scss';
+@import './abstract/key-frames.scss';
 @import './base/page.scss';
+@import './elements/card.scss';

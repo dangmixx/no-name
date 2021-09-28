@@ -1,0 +1,12 @@
+.card-shadow {
+	box-shadow: -1px 1px 15px -1px var(--box-shadow);
+	-webkit-box-shadow: -1px 1px 15px -1px var(--box-shadow);
+	-moz-box-shadow: -1px 1px 15px -1px var(--box-shadow);
+
+	&:hover {
+		box-shadow: -1px 1px 15px -1px var(--box-shadow-active);
+		-webkit-box-shadow: -1px 1px 15px -1px var(--box-shadow-active);
+		-moz-box-shadow: -1px 1px 15px -1px var(--box-shadow-active);
+		cursor: pointer;
+	}
+}

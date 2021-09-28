@@ -5,9 +5,17 @@
 	--primary-color: #ff4176a6;
 	--background-app: #efefef;
 	--white: #fff;
+	--box-shadow: #0000009a;
+	--box-shadow-active: #ff00009a;
 	font-size: 16px;
 }
 
 * {
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Montserrat', sans-serif;
+}
+
+ul,
+li {
+	margin-bottom: 0;
+	padding-inline-start: 20px;
 }

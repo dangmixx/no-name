@@ -40,7 +40,12 @@
               "src/theme.less",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "stylePreprocessorOptions": {
+                "includePaths": [
+                  "src/assets/scss/abstract"
+                ]
+              }
           },
           "configurations": {
             "production": {
