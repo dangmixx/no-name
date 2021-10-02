@@ -2,7 +2,7 @@
 @import './assets/icomoom/style.scss';
 @import './assets/scss/main.scss';
 :root {
-	--primary-color: #ff4176a6;
+	--primary-color: #ff739a;
 	--background-app: #efefef;
 	--white: #fff;
 	--box-shadow: #0000009a;
@@ -18,4 +18,11 @@ ul,
 li {
 	margin-bottom: 0;
 	padding-inline-start: 20px;
+}
+
+.ant-divider-with-text{
+    &.home-category{
+        font-weight: 600;
+        font-size: 2em;
+    }
 }

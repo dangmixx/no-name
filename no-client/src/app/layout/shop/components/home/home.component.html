@@ -1,67 +1,33 @@
 <section class="list-banner">
-	<nz-carousel nzAutoPlay [nzAutoPlaySpeed]="5000">
-		<div nz-carousel-content *ngFor="let index of listItem">
-			<h3>{{ index }}</h3>
-		</div>
+	<nz-carousel nzAutoPlay [nzEffect]="'scrollx'" [nzEnableSwipe]="isMobileOrTablet" #antCarousel>
+        <ng-container *ngFor="let index of listItem">
+            <div class="banner-home" nz-carousel-content  >
+                <img src="./assets/images/banner/banner-01.jpg">
+            </div>
+        </ng-container>
+
 	</nz-carousel>
 </section>
 <section class="top-items container-shop">
 	<div class="list-product" nz-row>
-		<div class="product-card" nz-col nzXs="12" nzSm="12" nzMd="6">
-			<div class="content-card card-shadow">
-				<div class="img-card">
-					<img src="assets\images\products\pro-img-01.jpg" />
-				</div>
-				<div class="info-card">
-					<div class="name-card">Name pro 1</div>
-					<div class="price-card">
-						<span>1000 vnd</span>
-						<span class="list-price-card">1000 vnd</span>
-					</div>
-				</div>
-			</div>
+		<div *ngFor="let item of listItem" class="product-card" nz-col nzSpan="12" nzMd="6">
+			<app-product-card></app-product-card>
 		</div>
-		<div class="product-card" nz-col nzXs="12" nzSm="12" nzMd="6">
-			<div class="content-card card-shadow">
-				<div class="img-card">
-					<img src="assets\images\products\pro-img-03.jpg" />
-				</div>
-				<div class="info-card">
-					<div class="name-card">Name pro 1</div>
-					<div class="price-card">
-						<span>1000 vnd</span>
-						<span class="list-price-card">1000 vnd</span>
-					</div>
-				</div>
-			</div>
+	</div>
+</section>
+<section class="list-product-by-category container-shop">
+    <nz-divider class="home-category" nzPlain [nzText]="'category1'"></nz-divider>
+	<div class="list-product" nz-row>
+		<div *ngFor="let item of listItem" class="product-card" nz-col nz-col nzSpan="12" nzMd="4">
+			<app-product-card></app-product-card>
 		</div>
-		<div class="product-card" nz-col nzXs="12" nzSm="12" nzMd="6">
-			<div class="content-card card-shadow">
-				<div class="img-card">
-					<img src="assets\images\products\pro-img-02.jpg" />
-				</div>
-				<div class="info-card">
-					<div class="name-card">Name pro 1</div>
-					<div class="price-card">
-						<span>1000 vnd</span>
-						<span class="list-price-card">1000 vnd</span>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="product-card" nz-col nzXs="12" nzSm="12" nzMd="6">
-			<div class="content-card card-shadow">
-				<div class="img-card">
-					<img src="assets\images\products\pro-img-02.jpg" />
-				</div>
-				<div class="info-card">
-					<div class="name-card">Name pro 1</div>
-					<div class="price-card">
-						<span>1000 vnd</span>
-						<span class="list-price-card">1000 vnd</span>
-					</div>
-				</div>
-			</div>
+	</div>
+</section>
+<section class="list-product-by-category container-shop">
+    <nz-divider class="home-category" nzPlain [nzText]="'category2'"></nz-divider>
+	<div class="list-product" nz-row>
+		<div *ngFor="let item of listItem" class="product-card" nz-col nz-col nzSpan="12" nzMd="4">
+			<app-product-card></app-product-card>
 		</div>
 	</div>
 </section>

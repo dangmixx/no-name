@@ -1,0 +1,56 @@
+@import 'mixin';
+.content-card {
+	@include mq('tablet', 'max') {
+		box-shadow: none;
+	}
+	.img-card {
+		padding-left: 100%;
+		padding-top: 100%;
+		position: relative;
+		img {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+		}
+		nz-skeleton-element {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			::ng-deep {
+				.ant-skeleton-image {
+					width: 100%;
+					height: 100%;
+				}
+			}
+		}
+	}
+	.info-card {
+		text-align: center;
+		background-color: #fff;
+		padding-top: 0.25rem;
+		padding-bottom: 0.25rem;
+		.name-card {
+			font-size: 1em;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2; /* number of lines to show */
+            -webkit-box-orient: vertical;
+		}
+		.price-card {
+			font-size: 1em;
+			font-weight: 600;
+			.list-price-card {
+                font-size: 0.8em;
+                font-weight: 500;
+				padding-right: 1rem;
+				opacity: 0.7;
+				text-decoration: line-through;
+			}
+		}
+	}
+}

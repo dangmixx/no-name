@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { UtilitiesService } from './utilities/utilities.service';
 registerLocaleData(en);
 
 @NgModule({
@@ -22,7 +23,9 @@ registerLocaleData(en);
 		HttpClientModule,
 		BrowserAnimationsModule,
 	],
-	providers: [{ provide: NZ_I18N, useValue: en_US }],
+	providers: [
+        UtilitiesService,
+        { provide: NZ_I18N, useValue: en_US }],
 	bootstrap: [AppComponent],
 })
 export class AppModule {}

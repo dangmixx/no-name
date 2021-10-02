@@ -3,10 +3,20 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import logging from './config/logging';
 import config from './config/config';
+import mongoose from 'mongoose';
+
 import sampleRouters from './routers/sample';
+import productRouter from './routers/product-router'
 
 const NAMESPACE = 'Server';
 const router = express();
+
+/** Connect to MongoDB */
+mongoose.connect(config.mongo.url, config.mongo.options).then(res => {
+	logging.info(NAMESPACE, 'Connected to Database');
+}).catch(err =>{
+	logging.error(NAMESPACE, err.message, err )
+});
 
 /* Logging the request */
 
@@ -44,6 +54,8 @@ router.use((req, res, next) => {
 /** Routers */
 
 router.use('', sampleRouters);
+/** Product Routers*/
+router.use('/product', productRouter);
 
 /** Error handle */
 router.use((req, res, next) => {
