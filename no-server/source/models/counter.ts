@@ -11,16 +11,16 @@ counterSchema.index({ _id: 1, seq: 1 }, { unique: true })
 const counterModel = mongoose.model('counter', counterSchema);
 
 const autoIncrementModelID = function (modelName: any, doc: any, next: any) {
-    counterModel.findByIdAndUpdate(        // ** Method call begins **
+    counterModel.findByIdAndUpdate(          // ** Method call begins **
         modelName,                           // The ID to find for in counters model
         { $inc: { seq: 1 } },                // The update
         { new: true, upsert: true },         // The options
-        function (error, counter: any) {          // The callback
+        function (error, counter: any) {     // The callback
             if (error) return next(error);
-            doc.id = counter.seq;
+            doc[modelName] = counter.seq;
             next();
         }
-    );                                     // ** Method call ends **
+    );                                        // ** Method call ends **
 }
 
 export default autoIncrementModelID;

@@ -1,12 +1,21 @@
 import express from 'express';
-import { getAllProducts, getProductById, createProducts, deleteProductById } from '../controllers/product-controller';
+import ProductController from '../controllers/product-controller';
 
 const productRouter = express.Router();
 
 console.log('ProductRouter initialed');
-productRouter.get('/list', getAllProducts);
-productRouter.get('/productId', getProductById);
-productRouter.post('', createProducts);
-productRouter.delete('/:id', deleteProductById);
+/**
+ * @wagger
+ * /:
+ *   post:
+ *     description: Welcome to swagger-jsdoc!
+ *     responses:
+ *       200:
+ *         description: Returns a mysterious string.
+ */
+productRouter.get('/list', ProductController.getAllProducts);
+productRouter.get('/productId', ProductController.getProductById);
+productRouter.post('', ProductController.createProducts);
+productRouter.delete('/:id', ProductController.deleteProductById);
 
 export = productRouter;

@@ -5,17 +5,22 @@ import logging from './config/logging';
 import config from './config/config';
 import mongoose from 'mongoose';
 
+import swaggerUi from 'swagger-ui-express'
+import swaggerJsDoc from 'swagger-jsdoc'
+
 import sampleRouters from './routers/sample';
-import productRouter from './routers/product-router'
+import productRouter from './routers/product-router';
+import categoryRouter from './routers/category-router'
 
 const NAMESPACE = 'Server';
 const router = express();
 
+
 /** Connect to MongoDB */
 mongoose.connect(config.mongo.url, config.mongo.options).then(res => {
 	logging.info(NAMESPACE, 'Connected to Database');
-}).catch(err =>{
-	logging.error(NAMESPACE, err.message, err )
+}).catch(err => {
+	logging.error(NAMESPACE, err.message, err)
 });
 
 /* Logging the request */
@@ -42,20 +47,18 @@ router.use(bodyParser.json());
 router.use((req, res, next) => {
 	res.header('Access-Control-Allow-Origin', '*');
 	res.header('Access-Control-Allow-Header', 'Origin, X-Requested-Width, Content-Type, Accept, Authorization');
-
 	if (req.method == 'OPTIONS') {
 		res.header('Access-Control-Allow-Methods', 'GET PUT POST DELETE');
 		return res.status(200).json({});
 	}
-
 	next();
 });
-
 /** Routers */
-
 router.use('', sampleRouters);
 /** Product Routers*/
-router.use('/product', productRouter);
+router.use('/api/category', categoryRouter);
+/** Product Routers*/
+router.use('/api/product', productRouter);
 
 /** Error handle */
 router.use((req, res, next) => {

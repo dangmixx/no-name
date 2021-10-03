@@ -3,10 +3,11 @@ import IProduct from "../interfaces/product";
 import autoIncrementModelID from "./counter";
 const ProductSchema: Schema = new Schema(
     {
-        id: { type: Number, unique: true, min: 1 },
+        productId: { type: Number, unique: true, min: 1 },
         name: { type: String, required: true },
-        imageUrl: { type: String, required: false },
+        imageUrl: { type: [String], required: false },
         price: { type: Number, required: false },
+        categoryId: { type: mongoose.Schema.Types.ObjectId, ref: 'Category' },
     },
     {
         timestamps: true
@@ -18,7 +19,7 @@ ProductSchema.pre('save', function (next) {
         next();
         return;
     }
-    autoIncrementModelID('id', this, next);
+    autoIncrementModelID('productId', this, next);
 });
 
 
