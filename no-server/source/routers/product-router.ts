@@ -9,13 +9,13 @@ console.log('ProductRouter initialed');
 
 productRouter.get('/list', ProductController.getAllProducts);
 productRouter.get('/productId', ProductController.getProductById);
+productRouter.delete('/:id', ProductController.deleteProductById);
+
 productRouter.post(
     '',
     createProductSchema,
-    [
-        validateRequestSchema,
-        ProductController.createProducts
-    ]);
-productRouter.delete('/:id', ProductController.deleteProductById);
+    [validateRequestSchema, ProductController.createProducts]
+);
+
 
 export = productRouter;
