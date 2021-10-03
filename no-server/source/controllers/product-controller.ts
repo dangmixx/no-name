@@ -3,7 +3,6 @@ import mongoose, { ObjectId } from 'mongoose';
 import Product from '../models/products';
 import Category from '../models/category';
 
-
 class ProductController {
 	public static async createProducts(req: Request, res: Response, next: NextFunction) {
 

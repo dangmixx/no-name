@@ -5,9 +5,6 @@ import logging from './config/logging';
 import config from './config/config';
 import mongoose from 'mongoose';
 
-import swaggerUi from 'swagger-ui-express'
-import swaggerJsDoc from 'swagger-jsdoc'
-
 import sampleRouters from './routers/sample';
 import productRouter from './routers/product-router';
 import categoryRouter from './routers/category-router'
