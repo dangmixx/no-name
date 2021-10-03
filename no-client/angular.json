@@ -30,6 +30,8 @@
                             "src/favicon.ico",
                             "src/assets",
                             "src/assets/images",
+                            "src/app/config.dev.json",
+                            "src/app/config.prod.json",
                             {
                                 "glob": "**/*",
                                 "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",

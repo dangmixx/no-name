@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -8,24 +8,34 @@ import { en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { UtilitiesService } from './utilities/utilities.service';
+import { ConfigurationAppService } from './service/configuration-app.service';
+import { RequestInterceptor } from './interceptors/request.interceptor';
 registerLocaleData(en);
-
+const initConfigFn = (configService: ConfigurationAppService) => {
+    return () => {
+        return configService.loadConfig();
+    };
+};
 @NgModule({
-	declarations: [AppComponent, NotFoundComponent],
-	imports: [
-		BrowserModule.withServerTransition({ appId: 'serverApp' }),
-		AppRoutingModule,
-		FormsModule,
-		HttpClientModule,
-		BrowserAnimationsModule,
-	],
-	providers: [
+    declarations: [AppComponent, NotFoundComponent],
+    imports: [
+        BrowserModule.withServerTransition({ appId: 'serverApp' }),
+        AppRoutingModule,
+        FormsModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+    ],
+    providers: [
         UtilitiesService,
-        { provide: NZ_I18N, useValue: en_US }],
-	bootstrap: [AppComponent],
+        { provide: NZ_I18N, useValue: en_US },
+        { provide: APP_INITIALIZER, useFactory: initConfigFn, multi: true, deps: [ConfigurationAppService] },
+        { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true },
+    ]
+    ,
+    bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
