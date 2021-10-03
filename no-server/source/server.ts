@@ -4,9 +4,10 @@ import bodyParser from 'body-parser';
 import logging from './config/logging';
 import config from './config/config';
 import mongoose from 'mongoose';
-import upload from 'express-fileupload'
+import upload from 'express-fileupload';
+import path from 'path';
 
-import sampleRouters from './routers/sample';
+import sampleRouters from './routers/uploadfile-router';
 import productRouter from './routers/product-router';
 import categoryRouter from './routers/category-router';
 
@@ -42,6 +43,7 @@ app.use(bodyParser.json());
 
 /** Upload File */
 app.use(upload())
+app.use('/assets', express.static(path.join(__dirname, '../uploads')));
 /** Rule API*/
 
 app.use((req, res, next) => {
@@ -54,7 +56,7 @@ app.use((req, res, next) => {
 	next();
 });
 /** Routers */
-app.use('', sampleRouters);
+app.use('/api/file', sampleRouters);
 /** Product Routers*/
 app.use('/api/category', categoryRouter);
 /** Product Routers*/
