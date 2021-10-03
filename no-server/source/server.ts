@@ -4,13 +4,14 @@ import bodyParser from 'body-parser';
 import logging from './config/logging';
 import config from './config/config';
 import mongoose from 'mongoose';
+import upload from 'express-fileupload'
 
 import sampleRouters from './routers/sample';
 import productRouter from './routers/product-router';
-import categoryRouter from './routers/category-router'
+import categoryRouter from './routers/category-router';
 
 const NAMESPACE = 'Server';
-const router = express();
+const app = express();
 
 
 /** Connect to MongoDB */
@@ -22,7 +23,7 @@ mongoose.connect(config.mongo.url, config.mongo.options).then(res => {
 
 /* Logging the request */
 
-router.use((req, res, next) => {
+app.use((req, res, next) => {
 	logging.info(NAMESPACE, `METHOD - [${req.method}] , URL - [${req.url}], IP - [${req.socket.remoteAddress}]`);
 
 	res.on('finish', () => {
@@ -36,12 +37,14 @@ router.use((req, res, next) => {
 });
 
 /** Parse the request */
-router.use(bodyParser.urlencoded({ extended: false }));
-router.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
+/** Upload File */
+app.use(upload())
 /** Rule API*/
 
-router.use((req, res, next) => {
+app.use((req, res, next) => {
 	res.header('Access-Control-Allow-Origin', '*');
 	res.header('Access-Control-Allow-Header', 'Origin, X-Requested-Width, Content-Type, Accept, Authorization');
 	if (req.method == 'OPTIONS') {
@@ -51,14 +54,14 @@ router.use((req, res, next) => {
 	next();
 });
 /** Routers */
-router.use('', sampleRouters);
+app.use('', sampleRouters);
 /** Product Routers*/
-router.use('/api/category', categoryRouter);
+app.use('/api/category', categoryRouter);
 /** Product Routers*/
-router.use('/api/product', productRouter);
+app.use('/api/product', productRouter);
 
 /** Error handle */
-router.use((req, res, next) => {
+app.use((req, res, next) => {
 	const error = new Error('Not Found');
 	return res.status(404).json({
 		message: error.message,
@@ -67,5 +70,5 @@ router.use((req, res, next) => {
 
 /** Create the server */
 
-const httpServer = http.createServer(router);
+const httpServer = http.createServer(app);
 httpServer.listen(config.server.port, () => logging.info(NAMESPACE, `Server running on [${config.server.hostname}:${config.server.port}]`));
