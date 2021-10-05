@@ -11,11 +11,6 @@ productRouter.get('/list', ProductController.getAllProducts);
 productRouter.get('/productId', ProductController.getProductById);
 productRouter.delete('/:id', ProductController.deleteProductById);
 
-productRouter.post(
-    '',
-    createProductSchema,
-    [validateRequestSchema, ProductController.createProducts]
-);
-
+productRouter.post('', createProductSchema, [validateRequestSchema, ProductController.createProducts]);
 
 export default productRouter;

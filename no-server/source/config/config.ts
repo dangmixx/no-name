@@ -15,9 +15,8 @@ const SERVER = {
 	token: {
 		expiredTime: SERVER_TOKEN_EXPIRE,
 		issuer: SERVER_TOKEN_ISSUER,
-		secretKey: SERVER_TOKEN_SECRET
-	}
-
+		secretKey: SERVER_TOKEN_SECRET,
+	},
 };
 
 const MONGO_OPTIONS = {
@@ -26,7 +25,7 @@ const MONGO_OPTIONS = {
 	socketTimeoutMS: 30000,
 	keepAlive: true,
 	autoIndex: true,
-	retryWrites: false
+	retryWrites: false,
 };
 
 // CONFIG MONGOOSE DATABASE
@@ -39,13 +38,12 @@ const MONGO = {
 	username: MONGO_USERNAME,
 	password: MONGO_PASSWORD,
 	options: MONGO_OPTIONS,
-	url: `${MONGO_HOST}://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_URL}`
-}
-
+	url: `${MONGO_HOST}://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_URL}`,
+};
 
 const config = {
 	server: SERVER,
-	mongo: MONGO
+	mongo: MONGO,
 };
 
 export default config;

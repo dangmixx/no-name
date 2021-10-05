@@ -14,12 +14,10 @@ import userRouter from './routers/user-router';
 import uploadFileRouter from './routers/uploadfile-router';
 const NAMESPACE = 'Server No';
 
-
 export default class Server {
 	app: express.Application;
 
-	constructor(
-	) {
+	constructor() {
 		this.app = express();
 		this.app.use(bodyParser.urlencoded({ extended: false }));
 		this.app.use(bodyParser.json());
@@ -33,15 +31,20 @@ export default class Server {
 
 	public startApp() {
 		const httpServer = http.createServer(this.app);
-		httpServer.listen(config.server.port, () => logging.info(NAMESPACE, `Server running on [${config.server.hostname}:${config.server.port}]`));
+		httpServer.listen(config.server.port, () =>
+			logging.info(NAMESPACE, `Server running on [${config.server.hostname}:${config.server.port}]`)
+		);
 	}
 
 	private connectDB() {
-		mongoose.connect(config.mongo.url, config.mongo.options).then(res => {
-			logging.info(NAMESPACE, 'Connected to Database');
-		}).catch(err => {
-			logging.error(NAMESPACE, err.message, err)
-		});
+		mongoose
+			.connect(config.mongo.url, config.mongo.options)
+			.then((res) => {
+				logging.info(NAMESPACE, 'Connected to Database');
+			})
+			.catch((err) => {
+				logging.error(NAMESPACE, err.message, err);
+			});
 	}
 
 	private middleWare() {
@@ -58,8 +61,8 @@ export default class Server {
 
 	private setRuleOfApi() {
 		this.app.use((req, res, next) => {
-			res.header("Access-Control-Allow-Origin", "*");
-			res.header("Access-Control-Allow-Headers", "*");
+			res.header('Access-Control-Allow-Origin', '*');
+			res.header('Access-Control-Allow-Headers', '*');
 			res.header('Access-Control-Allow-Methods', '*');
 			if (req.method == 'OPTIONS') {
 				res.header('Access-Control-Allow-Methods', 'GET PUT POST DELETE OPTIONS');
@@ -70,10 +73,9 @@ export default class Server {
 		});
 	}
 
-
 	private routerApp() {
 		/** Upload File */
-		this.app.use(upload())
+		this.app.use(upload());
 		this.app.use('/assets', express.static(path.join(__dirname, '../uploads')));
 		/** Routers */
 		this.app.use('/api/file', uploadFileRouter);
@@ -92,7 +94,6 @@ export default class Server {
 		});
 	}
 }
-
 
 /** Create the server */
 const server = new Server();

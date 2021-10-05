@@ -7,11 +7,7 @@ const categoryRouter = express.Router();
 
 console.log('CategoryRouter initialed');
 
-categoryRouter.post(
-    '',
-    createCategorySchema,
-    [validateRequestSchema, CategoryController.createCategories]
-);
+categoryRouter.post('', createCategorySchema, [validateRequestSchema, CategoryController.createCategories]);
 
 categoryRouter.get('/list', CategoryController.getAllCategories);
 categoryRouter.get('/productsByCategory', CategoryController.getAllProductOnCategory);
