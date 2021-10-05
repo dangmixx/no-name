@@ -2,9 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import Category from '../models/category';
 
 class CategoryController {
-    constructor() {
-    }
-
+    
     public static createCategories(req: Request, res: Response, next: NextFunction) {
         const {
             categoryId,

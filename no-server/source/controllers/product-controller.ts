@@ -42,9 +42,6 @@ class ProductController {
 					message: err.message,
 				});
 			});
-
-
-
 	};
 
 	public static deleteProductById(req: Request, res: Response, next: NextFunction) {
@@ -59,7 +56,6 @@ class ProductController {
 					message: err.message,
 				});
 			});
-
 	};
 
 	public static getAllProducts(req: Request, res: Response, next: NextFunction) {
@@ -75,7 +71,6 @@ class ProductController {
 					message: err.message,
 				});
 			});
-
 	};
 
 	public static getProductById(req: Request, res: Response, next: NextFunction) {
