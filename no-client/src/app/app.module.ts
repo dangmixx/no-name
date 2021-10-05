@@ -14,6 +14,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { UtilitiesService } from './utilities/utilities.service';
 import { ConfigurationAppService } from './service/configuration-app.service';
 import { RequestInterceptor } from './interceptors/request.interceptor';
+import { CategoriesService } from './service/categories.service';
+import { ProductsService } from './service/products.service';
 registerLocaleData(en);
 const initConfigFn = (configService: ConfigurationAppService) => {
     return () => {
@@ -31,6 +33,8 @@ const initConfigFn = (configService: ConfigurationAppService) => {
     ],
     providers: [
         UtilitiesService,
+        ProductsService,
+        CategoriesService,
         { provide: NZ_I18N, useValue: en_US },
         { provide: APP_INITIALIZER, useFactory: initConfigFn, multi: true, deps: [ConfigurationAppService] },
         { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true },

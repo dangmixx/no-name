@@ -14,12 +14,6 @@ export class RequestInterceptor implements HttpInterceptor {
     }
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         let headers = req.headers;
-        const apiUrl = headers.get('api-url-config') ? headers.get('api-url-config') : 'apiUrl';
-        console.log(apiUrl);
-        if (apiUrl !== 'local') {
-            req = req.clone({ url: this.configService.getConfig().apiUrl + req.url });
-        }
-
         const cloneReq = req.clone({
             headers: headers
         });

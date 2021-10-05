@@ -27,8 +27,7 @@ import { ProductCardComponent } from './components/product-card/product-card.com
 		ReactiveFormsModule,
 	],
 	providers: [
-		ProductsService,
-		CategoriesService
+
 	]
 })
 export class ShopModule { }
