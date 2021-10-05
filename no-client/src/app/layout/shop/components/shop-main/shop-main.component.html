@@ -10,11 +10,15 @@
 		</section>
 	</nz-header>
 	<nz-content>
-        <section class="list-menu ">
-            <div class="item-menu container-shop">
-                <ul *ngFor="let cate of listCategories">{{ cate.name }}</ul>
-            </div>
-        </section>
+		<section class="list-menu">
+			<div class="item-menu container-shop">
+				<ul *ngFor="let cate of listCategories">
+					{{
+						cate.name
+					}}
+				</ul>
+			</div>
+		</section>
 
 		<div class="inner-content">
 			<router-outlet></router-outlet>

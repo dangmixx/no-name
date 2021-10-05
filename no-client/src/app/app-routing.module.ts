@@ -5,9 +5,9 @@ const routes: Routes = [
 	{
 		path: '',
 		pathMatch: 'full',
-        redirectTo : 'shop'
+		redirectTo: 'shop',
 	},
-    {
+	{
 		path: 'shop',
 		loadChildren: () => import('./layout/shop/shop.module').then((m) => m.ShopModule),
 	},
@@ -15,10 +15,10 @@ const routes: Routes = [
 		path: 'admin',
 		loadChildren: () => import('./layout/admin/admin.module').then((m) => m.AdminModule),
 	},
-    {
-        path: '**',
-        redirectTo: 'shop'
-    }
+	{
+		path: '**',
+		redirectTo: 'shop',
+	},
 ];
 
 @NgModule({
@@ -27,7 +27,7 @@ const routes: Routes = [
 			initialNavigation: 'enabled',
 			onSameUrlNavigation: 'reload',
 			scrollPositionRestoration: 'top',
-            preloadingStrategy: PreloadAllModules,
+			preloadingStrategy: PreloadAllModules,
 		}),
 	],
 	exports: [RouterModule],

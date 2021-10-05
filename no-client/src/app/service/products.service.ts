@@ -6,7 +6,7 @@ import { IProduct } from '../model/products';
 
 @Injectable()
 export class ProductsService {
-	constructor(private http: HttpClient) { }
+	constructor(private http: HttpClient) {}
 
 	getListProduct(): Observable<GridData<IProduct>> {
 		return of({
@@ -36,7 +36,7 @@ export class ProductsService {
 					tag: 'string',
 					tagInfo: 'string',
 					categoryId: 'string',
-					slug: ''
+					slug: '',
 				},
 				{
 					id: 'string',
@@ -64,7 +64,7 @@ export class ProductsService {
 					categoryId: 'string',
 					slug: 'string',
 				},
-			]
+			],
 		});
 	}
 }

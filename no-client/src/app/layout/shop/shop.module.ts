@@ -26,8 +26,6 @@ import { ProductCardComponent } from './components/product-card/product-card.com
 		HttpClientJsonpModule,
 		ReactiveFormsModule,
 	],
-	providers: [
-
-	]
+	providers: [],
 })
-export class ShopModule { }
+export class ShopModule {}

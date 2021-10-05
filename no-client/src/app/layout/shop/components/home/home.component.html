@@ -1,11 +1,10 @@
 <section class="list-banner">
 	<nz-carousel nzAutoPlay [nzEffect]="'scrollx'" [nzEnableSwipe]="isMobileOrTablet" #antCarousel>
-        <ng-container *ngFor="let index of listItem">
-            <div class="banner-home" nz-carousel-content  >
-                <img src="./assets/images/banner/banner-01.jpg">
-            </div>
-        </ng-container>
-
+		<ng-container *ngFor="let index of listItem">
+			<div class="banner-home" nz-carousel-content>
+				<img src="./assets/images/banner/banner-01.jpg" />
+			</div>
+		</ng-container>
 	</nz-carousel>
 </section>
 <section class="top-items container-shop">
@@ -16,7 +15,7 @@
 	</div>
 </section>
 <section class="list-product-by-category container-shop">
-    <nz-divider class="home-category" nzPlain [nzText]="'category1'"></nz-divider>
+	<nz-divider class="home-category" nzPlain [nzText]="'category1'"></nz-divider>
 	<div class="list-product" nz-row>
 		<div *ngFor="let item of listItem" class="product-card" nz-col nz-col nzSpan="12" nzMd="4">
 			<app-product-card></app-product-card>
@@ -24,7 +23,7 @@
 	</div>
 </section>
 <section class="list-product-by-category container-shop">
-    <nz-divider class="home-category" nzPlain [nzText]="'category2'"></nz-divider>
+	<nz-divider class="home-category" nzPlain [nzText]="'category2'"></nz-divider>
 	<div class="list-product" nz-row>
 		<div *ngFor="let item of listItem" class="product-card" nz-col nz-col nzSpan="12" nzMd="4">
 			<app-product-card></app-product-card>

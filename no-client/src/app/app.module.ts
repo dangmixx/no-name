@@ -18,28 +18,27 @@ import { CategoriesService } from './service/categories.service';
 import { ProductsService } from './service/products.service';
 registerLocaleData(en);
 const initConfigFn = (configService: ConfigurationAppService) => {
-    return () => {
-        return configService.loadConfig();
-    };
+	return () => {
+		return configService.loadConfig();
+	};
 };
 @NgModule({
-    declarations: [AppComponent, NotFoundComponent],
-    imports: [
-        BrowserModule.withServerTransition({ appId: 'serverApp' }),
-        AppRoutingModule,
-        FormsModule,
-        HttpClientModule,
-        BrowserAnimationsModule,
-    ],
-    providers: [
-        UtilitiesService,
-        ProductsService,
-        CategoriesService,
-        { provide: NZ_I18N, useValue: en_US },
-        { provide: APP_INITIALIZER, useFactory: initConfigFn, multi: true, deps: [ConfigurationAppService] },
-        { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true },
-    ]
-    ,
-    bootstrap: [AppComponent],
+	declarations: [AppComponent, NotFoundComponent],
+	imports: [
+		BrowserModule.withServerTransition({ appId: 'serverApp' }),
+		AppRoutingModule,
+		FormsModule,
+		HttpClientModule,
+		BrowserAnimationsModule,
+	],
+	providers: [
+		UtilitiesService,
+		ProductsService,
+		CategoriesService,
+		{ provide: NZ_I18N, useValue: en_US },
+		{ provide: APP_INITIALIZER, useFactory: initConfigFn, multi: true, deps: [ConfigurationAppService] },
+		{ provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true },
+	],
+	bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

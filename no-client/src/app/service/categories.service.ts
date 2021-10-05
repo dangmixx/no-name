@@ -7,16 +7,12 @@ import { IProduct } from '../model/products';
 import { ConfigurationAppService } from './configuration-app.service';
 @Injectable()
 export class CategoriesService {
-    private requestURL = '';
-    constructor(
-        private configService: ConfigurationAppService,
-        private http: HttpClient
-    ) {
-        this.requestURL = this.configService.getConfig().apiUrl;
-    }
+	private requestURL = '';
+	constructor(private configService: ConfigurationAppService, private http: HttpClient) {
+		this.requestURL = this.configService.getConfig().apiUrl;
+	}
 
-    getListCategories(): Observable<GridData<ICategories>> {
-        return this.http.get<GridData<ICategories>>(`${this.requestURL}/category/productsByCategory`);
-    }
-
+	getListCategories(): Observable<GridData<ICategories>> {
+		return this.http.get<GridData<ICategories>>(`${this.requestURL}/category/productsByCategory`);
+	}
 }
