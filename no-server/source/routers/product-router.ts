@@ -18,4 +18,4 @@ productRouter.post(
 );
 
 
-export = productRouter;
+export default productRouter;

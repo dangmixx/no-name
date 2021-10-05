@@ -22,7 +22,13 @@ class CategoryController {
                     product: results
                 })
             })
-            .catch((err) => {
+            .catch((err: { message: string }) => {
+                if (err.message.includes('E11000')) {
+                    return res.status(500).json({
+                        message: `CategoryId ${categoryId} existed`,
+                        value: categoryId
+                    });
+                }
                 return res.status(500).json({
                     message: err.message,
                 });

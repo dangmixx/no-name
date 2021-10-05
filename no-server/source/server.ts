@@ -7,14 +7,18 @@ import mongoose from 'mongoose';
 import upload from 'express-fileupload';
 import path from 'path';
 
-import sampleRouters from './routers/uploadfile-router';
+import UploadFileRouter from './routers/uploadfile-router';
 import productRouter from './routers/product-router';
 import categoryRouter from './routers/category-router';
+import userRouter from './routers/user-router';
 const NAMESPACE = 'Server No';
-class Server {
+
+
+export default class Server {
 	app: express.Application;
 
-	constructor() {
+	constructor(
+	) {
 		this.app = express();
 		this.app.use(bodyParser.urlencoded({ extended: false }));
 		this.app.use(bodyParser.json());
@@ -71,11 +75,12 @@ class Server {
 		this.app.use(upload())
 		this.app.use('/assets', express.static(path.join(__dirname, '../uploads')));
 		/** Routers */
-		this.app.use('/api/file', sampleRouters);
+		this.app.use('/api/file', UploadFileRouter.postUploadFileRouter);
 		/** Product Routers*/
 		this.app.use('/api/category', categoryRouter);
 		/** Product Routers*/
 		this.app.use('/api/product', productRouter);
+		this.app.use('/api/user', userRouter);
 
 		/** Error handle */
 		this.app.use((req, res, next) => {
@@ -87,5 +92,6 @@ class Server {
 	}
 }
 
+
 /** Create the server */
-export default new Server();
+const server = new Server();

@@ -17,4 +17,4 @@ categoryRouter.get('/list', CategoryController.getAllCategories);
 categoryRouter.get('/productsByCategory', CategoryController.getAllProductOnCategory);
 categoryRouter.get('/productsByCategory/:id', CategoryController.getAllProductByCategoryId);
 
-export = categoryRouter;
+export default categoryRouter;
