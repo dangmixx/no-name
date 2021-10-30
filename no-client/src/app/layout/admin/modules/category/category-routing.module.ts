@@ -25,10 +25,11 @@ const routes: Routes = [
             {
                 path: 'edit/:id',
                 component: CreateEditCategoryComponent
-            },]
+            },
+        ]
     },
     {
-        path: 'product',
+        path: 'products',
         children: [
             {
                 path: '',
@@ -41,7 +42,8 @@ const routes: Routes = [
             {
                 path: 'edit/:id',
                 component: CreateEditProductComponent
-            },]
+            },
+        ]
     },
 
 ];
