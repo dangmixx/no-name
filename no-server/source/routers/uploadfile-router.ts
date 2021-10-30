@@ -1,24 +1,39 @@
 import express, { NextFunction, Request, Response } from 'express';
-import { UploadedFile } from 'express-fileupload';
+import { FileArray, UploadedFile } from 'express-fileupload';
+import config from '../config/config';
 const uploadFileRouter = express.Router();
 
 class UploadFileController {
-	public static postUploadFileRouter(req: Request, res: Response, next: NextFunction) {
+	public static uploadProductFileRouter(req: Request, res: Response, next: NextFunction) {
+
 		if (req.files) {
 			console.log(req.files);
-			const file = req.files.file as UploadedFile;
-			const fileName = file.name;
-			file.mv('./uploads/' + fileName, (err) => {
-				if (err) {
-					res.send(err);
-				} else {
-					res.send('File Upload');
-				}
-			});
+			// const listFile: FileArray = req.files;
+			// await listFile.forEach((file: UploadedFile) => {
+			// 	if (file.size > config.file.size) {
+			// 		res.send(err);
+			// 	}
+			// });
+			// const fileName = file.name;
+			// file.mv('./uploads/' + fileName, (err) => {
+			// 	if (err) {
+			// 		res.send(err);
+			// 	} else {
+			// 		res.send('File Upload');
+			// 	}
+			// });
 		}
 	}
+
+	// private async uploadMultiFile(listFile: UploadedFile[], path = './uploads/') {
+	// 	await listFile.forEach((file: UploadedFile) => {
+	// 		if (file.size > config.file.size) {
+	// 			resolve.
+	// 		}
+	// 	});
+	// }
 }
 
-uploadFileRouter.post('/login', UploadFileController.postUploadFileRouter);
+uploadFileRouter.post('/product', UploadFileController.uploadProductFileRouter);
 
 export default uploadFileRouter;

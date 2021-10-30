@@ -27,7 +27,7 @@ const routes: Routes = [
 			initialNavigation: 'enabled',
 			onSameUrlNavigation: 'reload',
 			scrollPositionRestoration: 'top',
-			preloadingStrategy: PreloadAllModules,
+			// preloadingStrategy: PreloadAllModules,
 		}),
 	],
 	exports: [RouterModule],
