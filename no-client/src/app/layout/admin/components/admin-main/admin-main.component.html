@@ -2,7 +2,7 @@
 	<nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
 		<div class="logo"></div>
 		<ul nz-menu nzTheme="dark" nzMode="inline">
-			<li nz-menu-item>
+			<li nz-menu-item [routerLink]="'dashboard'">
 				<i nz-icon nzType="dashboard"></i>
 				<span>Dashboard</span>
 			</li>
