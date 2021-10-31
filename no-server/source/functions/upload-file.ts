@@ -1,9 +1,6 @@
 import { FileArray, UploadedFile } from 'express-fileupload';
 import path from 'path';
-import config from '../config/config';
 import fs from 'fs';
-// const uploadPath = path.join(__dirname, '../../uploads' + `/${folderName}`);
-
 class UploadFileProvider {
 	public static async uploadFile(files: FileArray, refix: string, folderName: string): Promise<any> {
 
@@ -44,7 +41,6 @@ class UploadFileProvider {
 			})
 		});
 	}
-
 }
 
 export default UploadFileProvider;
