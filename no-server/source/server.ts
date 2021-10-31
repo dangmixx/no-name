@@ -7,11 +7,11 @@ import mongoose from 'mongoose';
 import upload from 'express-fileupload';
 import path from 'path';
 
-import UploadFileRouter from './routers/uploadfile-router';
 import productRouter from './routers/product-router';
 import categoryRouter from './routers/category-router';
 import userRouter from './routers/user-router';
 import uploadFileRouter from './routers/uploadfile-router';
+import CacheProvider from './middleware/node-cache';
 const NAMESPACE = 'Server No';
 
 export default class Server {

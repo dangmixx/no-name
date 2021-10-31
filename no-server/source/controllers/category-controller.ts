@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import Category from '../models/category';
-
+const CACHE_KEY_LIST = 'CATEGORIES';
 class CategoryController {
 	public static createCategories(req: Request, res: Response, next: NextFunction) {
 		const { categoryId, name, imageUrl } = req.body;

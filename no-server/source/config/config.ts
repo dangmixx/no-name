@@ -17,6 +17,8 @@ const SERVER = {
 		issuer: SERVER_TOKEN_ISSUER,
 		secretKey: SERVER_TOKEN_SECRET,
 	},
+	durationCache: 900,
+	checkPeriodCache: 1200
 };
 
 const MONGO_OPTIONS = {
