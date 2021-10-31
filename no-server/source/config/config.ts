@@ -44,10 +44,10 @@ const MONGO = {
 };
 
 // File Upload
-const UPLOAD_FILE_SIZE_MB = process.env.UPLOAD_FILE_SIZE_MB || 2;
+const UPLOAD_FILE_SIZE_MB = process.env.UPLOAD_FILE_SIZE_MB || 3;
 const UPLOAD_FILE_TYPE = process.env.UPLOAD_FILE_TYPE || 'image/png, image/jpeg';
 const UPLOAD_FILE = {
-	size: Number(UPLOAD_FILE_SIZE_MB) * 1024,
+	size: Number(UPLOAD_FILE_SIZE_MB) * 1024 * 1024,
 	type: UPLOAD_FILE_TYPE
 }
 

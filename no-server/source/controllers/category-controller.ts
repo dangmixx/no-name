@@ -1,20 +1,51 @@
 import { Request, Response, NextFunction } from 'express';
+import { FileArray } from 'express-fileupload';
+import UploadFileProvider from '../functions/upload-file';
 import Category from '../models/category';
-const CACHE_KEY_LIST = 'CATEGORIES';
 class CategoryController {
-	public static createCategories(req: Request, res: Response, next: NextFunction) {
+	public static async createCategories(req: Request, res: Response, next: NextFunction) {
 		const { categoryId, name, imageUrl } = req.body;
-		const product = new Category({
+		const reqFiles: FileArray = req.files!;
+		let listImageAfterUpload: string[] = [];
+		const category = new Category({
 			name: name,
-			imageUrl: imageUrl,
+			imageUrl: [],
 			categoryId: categoryId,
 		});
-		product
+
+		category
 			.save()
-			.then((results) => {
-				res.status(200).json({
-					product: results,
-				});
+			.then(async (results) => {
+				await UploadFileProvider.uploadFile(reqFiles, categoryId, 'category').then(
+					(result: { status: number, message?: any, data?: any }) => {
+						if (result.status === 500) {
+							return res.status(500).json({
+								message: result.message,
+							});
+						}
+						if (result.status === 200) {
+							listImageAfterUpload = result.data;
+						}
+					}
+				);
+				const newValue = {
+					$set: {
+						imageUrl: listImageAfterUpload
+					}
+				}
+				Category.updateOne({ _id: results._id }, newValue).exec()
+					.then(updateResult => {
+						res.status(200).json({
+							message: "Update Success",
+							id: results.categoryId
+						});
+					})
+					.catch((err: { message: string }) => {
+						return res.status(500).json({
+							message: err.message,
+						});
+					});
+
 			})
 			.catch((err: { message: string }) => {
 				if (err.message.includes('E11000')) {

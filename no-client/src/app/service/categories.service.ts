@@ -15,4 +15,8 @@ export class CategoriesService {
 	getListCategories(): Observable<GridData<ICategories>> {
 		return this.http.get<GridData<ICategories>>(`${this.requestURL}/category/productsByCategory`);
 	}
+
+	createCategory(): Observable<any> {
+		return this.http.post(`${this.requestURL}/category`, '');
+	}
 }

@@ -10,7 +10,6 @@ import path from 'path';
 import productRouter from './routers/product-router';
 import categoryRouter from './routers/category-router';
 import userRouter from './routers/user-router';
-import uploadFileRouter from './routers/uploadfile-router';
 import CacheProvider from './middleware/node-cache';
 const NAMESPACE = 'Server No';
 
@@ -78,7 +77,6 @@ export default class Server {
 		this.app.use(upload());
 		this.app.use('/assets', express.static(path.join(__dirname, '../uploads')));
 		/** Routers */
-		this.app.use('/api/file', uploadFileRouter);
 		/** Product Routers*/
 		this.app.use('/api/category', categoryRouter);
 		/** Product Routers*/
