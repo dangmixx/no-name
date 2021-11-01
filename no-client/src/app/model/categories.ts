@@ -2,7 +2,7 @@ export interface ICategories {
 	id: string;
 	name: string;
 	slug: string;
-	imageUrl: string;
+	images: string;
 	tag: string;
 	tagInfo: string;
 }

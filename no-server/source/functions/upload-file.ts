@@ -10,15 +10,15 @@ class UploadFileProvider {
 		}
 		let listFileUploaded: string[] = [];
 
-		if (Array.isArray(files.imageUrl)) {
-			const listFile = files.imageUrl as UploadedFile[];
+		if (Array.isArray(files.images)) {
+			const listFile = files.images as UploadedFile[];
 			await Promise.all(listFile.map(async (file) => {
 				await this.saveFile(file, uploadPath, refix).then(result => {
 					listFileUploaded.push(result);
 				});
 			}));
 		} else {
-			const file = (files.imageUrl as UploadedFile);
+			const file = (files.images as UploadedFile);
 			await this.saveFile(file, uploadPath, refix).then(result => {
 				listFileUploaded.push(result);
 			});

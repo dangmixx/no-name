@@ -4,6 +4,6 @@ import IProduct from './product';
 export default interface ICategory extends Document {
 	categoryId: string;
 	name: string;
-	imageUrl: string[];
+	images: string[];
 	listProducts: IProduct[];
 }

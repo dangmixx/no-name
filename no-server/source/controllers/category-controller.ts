@@ -4,12 +4,12 @@ import UploadFileProvider from '../functions/upload-file';
 import Category from '../models/category';
 class CategoryController {
 	public static async createCategories(req: Request, res: Response, next: NextFunction) {
-		const { categoryId, name, imageUrl } = req.body;
+		const { categoryId, name, images } = req.body;
 		const reqFiles: FileArray = req.files!;
 		let listImageAfterUpload: string[] = [];
 		const category = new Category({
 			name: name,
-			imageUrl: [],
+			images: [],
 			categoryId: categoryId,
 		});
 
@@ -30,15 +30,11 @@ class CategoryController {
 				);
 				const newValue = {
 					$set: {
-						imageUrl: listImageAfterUpload
+						images: listImageAfterUpload
 					}
 				}
 				Category.updateOne({ _id: results._id }, newValue).exec()
 					.then(updateResult => {
-						res.status(200).json({
-							message: "Update Success",
-							id: results.categoryId
-						});
 					})
 					.catch((err: { message: string }) => {
 						return res.status(500).json({

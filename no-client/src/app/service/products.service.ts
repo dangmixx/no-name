@@ -15,7 +15,7 @@ export class ProductsService {
 				{
 					id: 'string',
 					name: 'string',
-					imageUrl: 'string',
+					images: 'string',
 					price: 1,
 					listPrice: 1,
 					order: 1,
@@ -28,7 +28,7 @@ export class ProductsService {
 				{
 					id: 'string',
 					name: 'string',
-					imageUrl: 'string',
+					images: 'string',
 					price: 1,
 					listPrice: 1,
 					order: 1,
@@ -41,7 +41,7 @@ export class ProductsService {
 				{
 					id: 'string',
 					name: 'string',
-					imageUrl: 'string',
+					images: 'string',
 					price: 1,
 					listPrice: 1,
 					order: 1,
@@ -54,7 +54,7 @@ export class ProductsService {
 				{
 					id: 'string',
 					name: 'string',
-					imageUrl: 'string',
+					images: 'string',
 					price: 1,
 					listPrice: 1,
 					order: 1,
