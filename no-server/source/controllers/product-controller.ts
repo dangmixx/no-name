@@ -30,7 +30,7 @@ class ProductController {
 		await product
 			.save()
 			.then(async (results) => {
-				await UploadFileProvider.uploadFile(reqFiles, categoryId, 'category').then(
+				await UploadFileProvider.uploadFile(reqFiles, categoryId, 'product').then(
 					(result: { status: number, message?: any, data?: any }) => {
 						if (result.status === 500) {
 							return res.status(500).json({
